@@ -1,0 +1,20 @@
+<html> 
+<head> 
+<title>Sensor Monitor</title> 
+</head> 
+<body> 
+<div>X-Force: <div id="xforce" style="background-color:green; width:50%"/>&nbsp;</div> 
+<div>Y-Force: <div id="yforce" style="background-color:green; width:50%"/>&nbsp;</div> 
+<div>Z-Force: <div id="zforce" style="background-color:green; width:50%"/>&nbsp;</div> 
+<script> 
+var droid = new Android(); 
+var display = function(data) { 
+document.getElementById("xforce").style.width = (data.data.xforce / 10) +"px";
+document.getElementById("yforce").style.width = (data.data.yforce / 10) +"px";
+document.getElementById("zforce").style.width = (data.data.zforce / 10) +"px";
+} 
+droid.startSensingTimed(1,250); 
+droid.registerCallback("sensors", display); 
+</script> 
+</body> 
+</html>
