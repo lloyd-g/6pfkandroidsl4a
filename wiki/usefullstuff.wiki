@@ -1,0 +1,13 @@
+#summary some stuff that I've found usefull.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+https://github.com/flot
+for charts on phone in javascript.
+http://code.google.com/p/android-scripting/
+the engine
