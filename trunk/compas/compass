@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Graph demo</title>
+<script language="javascript" type="text/javascript" src="jquery.min.js"></script> 
+<script language="javascript" type="text/javascript" src="jquery.flot.min.js"></script>
+
+</head>
+<body>
+<h1>Graph</h1>
+<div>MagZ: <div id="ehr" style="display: inline;"/></div>
+<div id="graph" style="width:300px;height:300px;"></div> 
+<div>
+
+</div>
+<script type="text/javascript">
+//var timerOn = 0;
+//var timerInterval = 25;
+var droid = new Android();
+var display = function(data) {
+var d1 = [ [ 0 , 0 ], [ data.data.xMag, data.data.yMag ]];
+
+// setup plot
+    var options = {
+        series: { shadowSize: 0 }, // drawing is faster without shadows
+        yaxis: { min: -40, max: 40 },
+        xaxis: { min: -40, max: 40 },
+        }
+
+$.plot($("#graph"), [d1], options);
+document.getElementById("ehr").innerHTML = data.data.yMag;
+}
+droid.startSensingTimed(1,500); 
+droid.registerCallback("sensors", display);
+
+</script> 
+</body>
+</html>
+
