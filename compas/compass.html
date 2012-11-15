@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Graph</h1>
-<div>MagZ: <div id="ehr" style="display: inline;"/></div>
+<div>Bearing: <div id="ehr" style="display: inline;"/></div>
 <div id="graph" style="width:300px;height:300px;"></div> 
 <div>
 
@@ -27,8 +27,7 @@ var d1 = [ [ 0 , 0 ], [ data.data.xMag, data.data.yMag ]];
         }
 
 $.plot($("#graph"), [d1], options);
-document.getElementById("ehr").innerHTML = data.data.yMag;
-}
+document.getElementById("ehr").innerHTML =  (180/Math.PI) * Math.atan2( data.data.xMag, data.data.yMag );}
 droid.startSensingTimed(1,500); 
 droid.registerCallback("sensors", display);
 
