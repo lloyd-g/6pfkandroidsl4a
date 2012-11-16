@@ -18,7 +18,7 @@ var display = function(data) {
 var d1 = [ [ 0 , 0 ], [ data.data.xMag, data.data.yMag ]];
   // from http://www.movable-type.co.uk/scripts/os-grid-dist.html
  // arctan gives us the bearing, just need to convert -pi..+pi to 0..360 deg
-  var deg = (90-(Math.atan2(data.data.yMag, data.data.xMag)/Math.PI*180)+360) % 360;
+  var deg = 360-((90-(Math.atan2(data.data.yMag, data.data.xMag)/Math.PI*180)+360) % 360);
 
 // setup plot
     var options = {
