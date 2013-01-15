@@ -11,3 +11,8 @@ https://github.com/flot
 for charts on phone in javascript.
 http://code.google.com/p/android-scripting/
 the engine
+
+http://technofart.blogspot.de/search/label/aprs sends APRS packets via python 
+
+Python help http://www.python.org/doc/versions/ PL4A is 2.6.2 so my phone says.
+http://docs.python.org/release/2.6.2/
