@@ -12,10 +12,9 @@ def createSine(  freq=440,length = 3 ,volume = .85, sampleRate =44100) :
  volumeScale = volume*32767
 
  for samp in xrange(numSamples):
-    phi = samp * cyclesPerSample
-    phi -= int(phi)
-    
-    data.append(int(round(volumeScale * sin(twopi * phi))))
+  phi = samp * cyclesPerSample
+  phi -= int(phi)
+  data.append(int(round(volumeScale * sin(twopi * phi))))
  return  data
 
 CODE = {'A': '13',     'B': '3111',   'C': '3131', 
@@ -34,42 +33,37 @@ CODE = {'A': '13',     'B': '3111',   'C': '3131',
         '9': '33331',  ' ': 's', 
         }
 
-
 def main():
- 
-         msg = 'hello world'
-         out = ''
-         for char in msg:
-                  out += CODE[char.upper()] + 'b'
-         print out
-         f = wave.open('morse.wav', 'w')
-         f.setparams((1, 2, 44100, 0, "NONE", "Uncompressed"))
-         fh = open('code.txt', "rb")
-         b = 1
-         for b in out:
-                             if b == '1':
-                                                          set = createSine(700, 0.12)
-                                                          f.writeframes(set.tostring())
-                                                          set = createSine(0, 0.12)
-                                                          f.writeframes(set.tostring())
-                             elif b == '3':
-                                                          set = createSine(700, 0.36)
-                                                          f.writeframes(set.tostring())
-                                                          set = createSine(0, 0.12)
-                                                          f.writeframes(set.tostring())
-                             elif b == 'b':
-                                                          set = createSine(0, 0.36)
-                                                          f.writeframes(set.tostring())
-                             elif b == 's':
-                                                          set = createSine(0, 0.84)
-                                                          f.writeframes(set.tostring())
-                             else:
-                                                          set = createSine(0, 0.12)
-                                                          f.writeframes(set.tostring())
-
-         fh.close()
-         f.close()
-
+ msg = 'hello world'
+ out = ''
+ for char in msg:
+  out += CODE[char.upper()] + 'b'
+ print out
+ f = wave.open('morse.wav', 'w')
+ f.setparams((1, 2, 44100, 0, "NONE", "Uncompressed"))
+ b = 1
+ for b in out:
+  if b == '1':
+   set = createSine(700, 0.12)
+   f.writeframes(set.tostring())
+   set = createSine(0, 0.12)
+   f.writeframes(set.tostring())
+  elif b == '3':
+   set = createSine(700, 0.36)
+   f.writeframes(set.tostring())
+   set = createSine(0, 0.12)
+   f.writeframes(set.tostring())
+  elif b == 'b':
+   set = createSine(0, 0.36)
+   f.writeframes(set.tostring())
+  elif b == 's':
+   set = createSine(0, 0.48)
+   f.writeframes(set.tostring())
+  else:
+   set = createSine(0, 0.12)
+   f.writeframes(set.tostring())
+ f.close()
   
 if __name__ == "__main__":
  main()
+
